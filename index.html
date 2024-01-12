@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>JokeAPI - Programming Joke</h1>
+
+  <button id="getJokeBtn">Get Programming Joke</button>
+
+  <div id="jokeContainer">
+
+  </div>
+
+  <script>
+    const getJokeBtn = document.querySelector("#getJokeBtn")
+    const jokeContainer = document.querySelector("#jokeContainer")
+    const apiUrl = 'https://v2.jokeapi.dev/joke/Programming?type=single'
+
+    getJokeBtn.addEventListener("click", function () {
+      fetch(apiUrl)
+        .then(function responseHandler(response) {
+          return response.json()
+        })
+        .then(function showData(data) {
+          jokeContainer.innerHTML = `<p>${data.joke}</p>`
+        })
+        .catch(function showError(error) {
+          jokeContainer.innerHTML = `<p>you are offline. Please turn on internet</p>`
+        })
+    })
+
+
+  </script>
+</body>
+
+</html>
